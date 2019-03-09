@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Xook</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Titulo para la vista vacia [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">Esto se encuentra un poco vacio</string>
+
+    <!-- Subtitulo para vista vacia [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Empieza añadiendo nuevos contactos</string>
+
+    <!-- Titulo de la configuracion  -->
+    <string name="drawer_configuracion">Configuracion</string>
+
+    <!-- Titulo de la cuenta  -->
+    <string name="drawer_cuenta">Mi cuenta</string>
+
+    <!-- Titulo de las palabras  -->
+    <string name="drawer_palabras">Palabras</string>
+
+    <!-- Titulo de la camara -->
+    <string name="drawer_camara">Camara</string>
+
+    <!-- Texto usuario -->
+    <string name="cuenta">Perfil</string>
+
+    <!-- Texto pacientes -->
+    <string name="palabras">Palabras</string>
+
+    <!-- Texto consulta -->
+    <string name="camara">Camara</string>
+
+</resources>
