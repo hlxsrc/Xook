@@ -3,10 +3,13 @@ package com.example.xook;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -14,6 +17,13 @@ import android.view.ViewGroup;
  */
 public class PalabrasFragment extends Fragment {
 
+
+    private RecyclerView recyclerView;
+    private ArrayList<PalabraModel> imageModelArrayList;
+    private PalabraAdapter adapter;
+
+    private int[] myImageList = new int[]{R.drawable.apple, R.drawable.mango,R.drawable.straw, R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
+    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
 
     public PalabrasFragment() {
         // Required empty public constructor
@@ -24,9 +34,31 @@ public class PalabrasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View RootView = inflater.inflate(R.layout.fragment_palabras, container, false);
+
+        recyclerView =  RootView.findViewById(R.id.recycler);
+
+        imageModelArrayList = eatFruits();
+        adapter = new PalabraAdapter(getContext(), imageModelArrayList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_palabras, container, false);
+        return RootView;
+    }
+
+    private ArrayList<PalabraModel> eatFruits(){
+
+        ArrayList<PalabraModel> list = new ArrayList<>();
+
+        for(int i = 0; i < 7; i++){
+            PalabraModel fruitModel = new PalabraModel();
+            fruitModel.setName(myImageNameList[i]);
+            fruitModel.setImage_drawable(myImageList[i]);
+            list.add(fruitModel);
+        }
+
+        return list;
     }
 
 }

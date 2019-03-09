@@ -6,28 +6,12 @@
     android:layout_height="wrap_content"
     tools:context=".PalabrasFragment">
 
-    <!-- A CardView that contains a TextView -->
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_centerInParent="true"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/list_card_height"
-        android:layout_margin="20dp"
-        card_view:cardCornerRadius="8dp">
-
-
-        <ImageView
-            android:id="@+id/photo_image_view"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/mesa"/>
-
-
-    </android.support.v7.widget.CardView>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"/>
 
 </RelativeLayout>
 
