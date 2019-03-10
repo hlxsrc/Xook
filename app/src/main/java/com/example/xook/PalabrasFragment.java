@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PalabrasFragment extends Fragment {
+public class PalabrasFragment extends Fragment{
 
 
     private RecyclerView recyclerView;
@@ -24,6 +24,7 @@ public class PalabrasFragment extends Fragment {
 
     private int[] myImageList = new int[]{R.drawable.apple, R.drawable.mango,R.drawable.straw, R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
     private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
+    private int[] myAudioList = new int[]{R.raw.apple, R.raw.mango,R.raw.straw, R.raw.pineapple,R.raw.orange,R.raw.blue,R.raw.water};
 
     public PalabrasFragment() {
         // Required empty public constructor
@@ -36,9 +37,11 @@ public class PalabrasFragment extends Fragment {
 
         View RootView = inflater.inflate(R.layout.fragment_palabras, container, false);
 
+
+
         recyclerView =  RootView.findViewById(R.id.recycler);
 
-        imageModelArrayList = eatFruits();
+        imageModelArrayList = palabras();
         adapter = new PalabraAdapter(getContext(), imageModelArrayList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -47,15 +50,16 @@ public class PalabrasFragment extends Fragment {
         return RootView;
     }
 
-    private ArrayList<PalabraModel> eatFruits(){
+    private ArrayList<PalabraModel> palabras(){
 
         ArrayList<PalabraModel> list = new ArrayList<>();
 
         for(int i = 0; i < 7; i++){
-            PalabraModel fruitModel = new PalabraModel();
-            fruitModel.setName(myImageNameList[i]);
-            fruitModel.setImage_drawable(myImageList[i]);
-            list.add(fruitModel);
+            PalabraModel palabraModel = new PalabraModel();
+            palabraModel.setName(myImageNameList[i]);
+            palabraModel.setImage_drawable(myImageList[i]);
+            palabraModel.setAudioResourceId(myAudioList[i]);
+            list.add(palabraModel);
         }
 
         return list;
