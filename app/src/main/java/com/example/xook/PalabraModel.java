@@ -5,6 +5,7 @@ public class PalabraModel {
     private String name;
     private int image_drawable;
     private int audio_resource;
+    private int s_audio_resource;
 
     /**
      * Create a new Word object.
@@ -61,5 +62,20 @@ public class PalabraModel {
     public void setAudioResourceId(int audio_resource) {
         this.audio_resource = audio_resource;
     }
+
+    /**
+     * Return the audio resource ID of the word.
+     */
+    public int getSlowAudioResourceId() {
+        return s_audio_resource;
+    }
+
+    /**
+     * Return the audio resource ID of the word.
+     */
+    public void setSlowAudioResourceId(int audio_resource) {
+        this.s_audio_resource = audio_resource;
+    }
+
 
 }

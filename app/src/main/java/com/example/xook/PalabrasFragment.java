@@ -22,9 +22,10 @@ public class PalabrasFragment extends Fragment{
     private ArrayList<PalabraModel> imageModelArrayList;
     private PalabraAdapter adapter;
 
-    private int[] myImageList = new int[]{R.drawable.apple, R.drawable.mango,R.drawable.straw, R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
-    private String[] myImageNameList = new String[]{"Apple","Mango" ,"Strawberry","Pineapple","Orange","Blueberry","Watermelon"};
-    private int[] myAudioList = new int[]{R.raw.apple, R.raw.mango,R.raw.straw, R.raw.pineapple,R.raw.orange,R.raw.blue,R.raw.water};
+    private int[] myImageList = new int[]{R.drawable.apple,R.drawable.mango,R.drawable.straw, R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
+    private String[] myImageNameList = new String[]{"Manzana","Mango","Fresa","Piña","Naranja","Mora","Sandía"};
+    private int[] myAudioList = new int[]{R.raw.manzana,R.raw.mango,R.raw.fresa,R.raw.pina,R.raw.naranja,R.raw.mora,R.raw.sandia};
+    private int[] sMyAudioList = new int[]{R.raw.s_manzana,R.raw.s_mango,R.raw.s_fresa,R.raw.s_pina,R.raw.s_naranja,R.raw.s_mora,R.raw.s_sandia};
 
     public PalabrasFragment() {
         // Required empty public constructor
@@ -59,6 +60,7 @@ public class PalabrasFragment extends Fragment{
             palabraModel.setName(myImageNameList[i]);
             palabraModel.setImage_drawable(myImageList[i]);
             palabraModel.setAudioResourceId(myAudioList[i]);
+            palabraModel.setSlowAudioResourceId(sMyAudioList[i]);
             list.add(palabraModel);
         }
 
