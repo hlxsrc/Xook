@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
-
         // load the store fragment by default
         toolbar.setTitle("Palabras");
         loadFragment(new PalabrasFragment());

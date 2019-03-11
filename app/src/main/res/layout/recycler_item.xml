@@ -9,7 +9,7 @@
         android:id="@+id/card_view"
         android:layout_width="300dp"
         android:layout_height="@dimen/list_card_height"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="10dp"
         android:layout_margin="5dp">
 
         <LinearLayout
@@ -44,17 +44,23 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="10dp">
 
-                <Button
+                <!-- Should NOT be using two FAB -->
+
+                <android.support.design.widget.FloatingActionButton
                     android:id="@+id/play_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1" />
+                    android:layout_gravity="end|bottom"
+                    android:src="@drawable/ic_play_normal"
+                    android:layout_margin="18dp" />
 
-                <Button
+                <android.support.design.widget.FloatingActionButton
                     android:id="@+id/play_slow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2" />
+                    android:layout_gravity="end|bottom"
+                    android:src="@drawable/ic_play_slow"
+                    android:layout_margin="18dp" />
 
             </LinearLayout>
 

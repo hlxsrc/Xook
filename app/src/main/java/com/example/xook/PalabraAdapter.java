@@ -3,6 +3,7 @@ package com.example.xook;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -144,8 +145,8 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
 
         TextView tv;
         ImageView iv;
-        Button playNormal;
-        Button playSlow;
+        FloatingActionButton playNormal;
+        FloatingActionButton playSlow;
 
 
         public MyViewHolder(View itemView) {
@@ -153,8 +154,8 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
 
             tv = (TextView) itemView.findViewById(R.id.tv);
             iv = (ImageView) itemView.findViewById(R.id.iv);
-            playNormal = (Button) itemView.findViewById(R.id.play_normal);
-            playSlow = (Button) itemView.findViewById(R.id.play_slow);
+            playNormal = itemView.findViewById(R.id.play_normal);
+            playSlow = itemView.findViewById(R.id.play_slow);
             // Create and setup the {@link AudioManager} to request audio focus
             mAudioManager = (AudioManager) itemView.getContext().getSystemService(Context.AUDIO_SERVICE);
         }
