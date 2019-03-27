@@ -3,7 +3,6 @@ package com.example.xook;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -25,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // load the store fragment by default
-        toolbar.setTitle("Palabras");
-        loadFragment(new PalabrasFragment());
+        toolbar.setTitle("Aprende");
+        loadFragment(new AprendeFragment());
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -37,18 +36,18 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_cuenta:
-                    toolbar.setTitle("Perfil");
-                    fragment = new CuentaFragment();
+                    toolbar.setTitle("Encuentra");
+                    fragment = new EncuentraFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_palabras:
-                    toolbar.setTitle("Palabras");
-                    fragment = new PalabrasFragment();
+                    toolbar.setTitle("Aprende");
+                    fragment = new AprendeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_camera:
-                    toolbar.setTitle("Camara");
-                    fragment = new CamaraFragment();
+                    toolbar.setTitle("Explora");
+                    fragment = new ExploraFragment();
                     loadFragment(fragment);
                     return true;
             }

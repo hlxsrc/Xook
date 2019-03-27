@@ -15,19 +15,19 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PalabrasFragment extends Fragment{
+public class AprendeFragment extends Fragment{
 
 
     private RecyclerView recyclerView;
     private ArrayList<PalabraModel> imageModelArrayList;
     private PalabraAdapter adapter;
 
-    private int[] myImageList = new int[]{R.drawable.apple,R.drawable.mango,R.drawable.straw, R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
+    private int[] myImageList = new int[]{R.drawable.apple,R.drawable.mango,R.drawable.straw,R.drawable.pineapple,R.drawable.orange,R.drawable.blue,R.drawable.water};
     private String[] myImageNameList = new String[]{"Manzana","Mango","Fresa","Piña","Naranja","Mora","Sandía"};
     private int[] myAudioList = new int[]{R.raw.manzana,R.raw.mango,R.raw.fresa,R.raw.pina,R.raw.naranja,R.raw.mora,R.raw.sandia};
     private int[] sMyAudioList = new int[]{R.raw.s_manzana,R.raw.s_mango,R.raw.s_fresa,R.raw.s_pina,R.raw.s_naranja,R.raw.s_mora,R.raw.s_sandia};
 
-    public PalabrasFragment() {
+    public AprendeFragment() {
         // Required empty public constructor
     }
 
@@ -36,7 +36,7 @@ public class PalabrasFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View RootView = inflater.inflate(R.layout.fragment_palabras, container, false);
+        View RootView = inflater.inflate(R.layout.fragment_aprende, container, false);
 
 
 

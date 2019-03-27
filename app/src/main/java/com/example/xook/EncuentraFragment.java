@@ -1,20 +1,31 @@
 package com.example.xook;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHolder> {
+import static android.app.Activity.RESULT_OK;
+import static com.example.xook.ExploraFragment.REQUEST_IMAGE_CAPTURE;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class EncuentraFragment extends Fragment {
+
+    private FloatingActionButton playNormal;
+    private ArrayList<PalabraModel> imageModelArrayList;
 
     /**
      * Handles playback of all the sound files
@@ -67,36 +78,22 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
         }
     };
 
-    private LayoutInflater inflater;
-    private ArrayList<PalabraModel> imageModelArrayList;
 
-
-    public PalabraAdapter(Context ctx, ArrayList<PalabraModel> imageModelArrayList){
-
-        inflater = LayoutInflater.from(ctx);
-        this.imageModelArrayList = imageModelArrayList;
+    public EncuentraFragment() {
+        // Required empty public constructor
     }
 
-    @Override
-    public PalabraAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = inflater.inflate(R.layout.recycler_item, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
-
-        return holder;
-    }
 
     @Override
-    public void onBindViewHolder(PalabraAdapter.MyViewHolder holder, int pos) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_encuentra, container, false);
 
-        final int position = pos;
+        playNormal = v.findViewById(R.id.play_normal);
+        // Create and setup the {@link AudioManager} to request audio focus
+        mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
 
-        holder.iv.setImageResource(imageModelArrayList.get(position).getImage_drawable());
-        holder.tv.setText(imageModelArrayList.get(position).getName());
-
-        final Context context = holder.iv.getContext();
-
-        holder.playNormal.setOnClickListener(new View.OnClickListener() {
+        playNormal.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 // Release the media player if it currently exists because we are about to
@@ -104,7 +101,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
                 releaseMediaPlayer();
 
                 // Get the {@link Word} object at the given position the user clicked on
-                PalabraModel palabra = imageModelArrayList.get(position);
+                //PalabraModel palabra = imageModelArrayList.get(position);
 
                 // Request audio focus so in order to play the audio file. The app needs to play a
                 // short audio file, so we will request audio focus with a short amount of time
@@ -117,7 +114,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create(context, palabra.getAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.manzana);
 
                     // Start the audio file
                     mMediaPlayer.start();
@@ -126,68 +123,14 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
                     // media player once the sound has finished playing.
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
+
+                dispatchTakePictureIntent();
             }
         });
 
-        holder.playSlow.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                // Release the media player if it currently exists because we are about to
-                // play a different sound file
-                releaseMediaPlayer();
-
-                // Get the {@link Word} object at the given position the user clicked on
-                PalabraModel palabra = imageModelArrayList.get(position);
-
-                // Request audio focus so in order to play the audio file. The app needs to play a
-                // short audio file, so we will request audio focus with a short amount of time
-                // with AUDIOFOCUS_GAIN_TRANSIENT.
-                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
-                        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-
-                if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    // We have audio focus now.
-
-                    // Create and setup the {@link MediaPlayer} for the audio resource associated
-                    // with the current word
-                    mMediaPlayer = MediaPlayer.create(context, palabra.getSlowAudioResourceId());
-
-                    // Start the audio file
-                    mMediaPlayer.start();
-
-                    // Setup a listener on the media player, so that we can stop and release the
-                    // media player once the sound has finished playing.
-                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
-                }
-            }
-        });
+        return v;
     }
 
-    @Override
-    public int getItemCount() {
-        return imageModelArrayList.size();
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-
-        TextView tv;
-        ImageView iv;
-        FloatingActionButton playNormal;
-        FloatingActionButton playSlow;
-
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-
-            tv = (TextView) itemView.findViewById(R.id.tv);
-            iv = (ImageView) itemView.findViewById(R.id.iv);
-            playNormal = itemView.findViewById(R.id.play_normal);
-            playSlow = itemView.findViewById(R.id.play_slow);
-            // Create and setup the {@link AudioManager} to request audio focus
-            mAudioManager = (AudioManager) itemView.getContext().getSystemService(Context.AUDIO_SERVICE);
-        }
-
-    }
 
     /**
      * Clean up the media player by releasing its resources.
@@ -210,6 +153,19 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.MyViewHo
         }
     }
 
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getContext().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        }
+    }
 
 }
+

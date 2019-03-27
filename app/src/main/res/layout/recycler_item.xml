@@ -24,7 +24,7 @@
                 android:layout_height="200dp"
                 android:src="@drawable/apple"
                 android:id="@+id/iv"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:scaleType="centerInside"/>
 
             <TextView
@@ -34,33 +34,41 @@
                 android:gravity="center_horizontal"
                 android:text="Image"
                 android:textColor="#000"
-                android:padding="10dp"
-                android:textSize="30sp" />
+                android:padding="7dp"
+                android:textSize="36sp"
+                android:fontFamily="@font/bubblegum_sans"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:padding="10dp">
+                android:padding="8dp">
 
                 <!-- Should NOT be using two FAB -->
 
+
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/play_normal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|bottom"
-                    android:src="@drawable/ic_play_normal"
-                    android:layout_margin="18dp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:maxImageSize="72dp"
+                    android:src="@drawable/ic_bocina"
+                    android:scaleType="center"
+                    android:layout_margin="14dp"
+                    app:fabCustomSize="72dp" />
+
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/play_slow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|bottom"
-                    android:src="@drawable/ic_play_slow"
-                    android:layout_margin="18dp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:maxImageSize="72dp"
+                    android:src="@drawable/ic_tortuga"
+                    android:scaleType="center"
+                    android:layout_margin="14dp"
+                    app:fabCustomSize="72dp" />
+
 
             </LinearLayout>
 

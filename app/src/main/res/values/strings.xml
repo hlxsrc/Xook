@@ -12,22 +12,22 @@
     <!-- Titulo de la configuracion  -->
     <string name="drawer_configuracion">Configuracion</string>
 
-    <!-- Titulo de la cuenta  -->
-    <string name="drawer_cuenta">Mi cuenta</string>
+    <!-- Titulo encuentra  -->
+    <string name="drawer_cuenta">Encuentra</string>
 
-    <!-- Titulo de las palabras  -->
-    <string name="drawer_palabras">Palabras</string>
+    <!-- Titulo aprende  -->
+    <string name="drawer_palabras">Aprende</string>
 
-    <!-- Titulo de la camara -->
-    <string name="drawer_camara">Camara</string>
+    <!-- Titulo explora -->
+    <string name="drawer_camara">Explora</string>
 
     <!-- Texto usuario -->
-    <string name="cuenta">Perfil</string>
+    <string name="cuenta">Encuentra</string>
 
     <!-- Texto pacientes -->
-    <string name="palabras">Palabras</string>
+    <string name="palabras">Aprende</string>
 
     <!-- Texto consulta -->
-    <string name="camara">Camara</string>
+    <string name="camara">Explora</string>
 
 </resources>
